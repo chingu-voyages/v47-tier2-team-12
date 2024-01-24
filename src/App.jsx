@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import { Route, Routes } from 'react-router';
 import Studying from './components/Studying';
 import RoutineActivity from './components/RoutineActivity';
+import DailyTask from "./components/DailyTask"
 import axios from 'axios';
 const App = () => {
   const [allData , setAllData] = useState([])
@@ -21,6 +22,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<RoutineActivity allData={allData}/>} />
         <Route path='/studying' element={<Studying/>} />
+        <Route path='/dialy-task-project' element={<DailyTask/>} />
       </Routes>
     </div>
   )
