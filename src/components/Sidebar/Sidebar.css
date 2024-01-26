@@ -1,0 +1,12 @@
+.app-sidear {
+    width: 18%;
+}
+.app-sidebar__item {
+    background-color: rgb(253 164 175);
+}
+.app-sidebar__item span{
+    background-color: rgb(232 121 249);
+}
+.selected {
+    background-color: rgb(192 132 252);
+}
