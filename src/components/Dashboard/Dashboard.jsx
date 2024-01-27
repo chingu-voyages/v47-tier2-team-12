@@ -3,7 +3,7 @@ import { Todo_context } from "../Context/Context";
 
 const Dashboard = () => {
   const { projectData, setProjectData } = useContext(Todo_context);
-  console.log(projectData, "project");
+  // console.log(projectData, "project");
   return (
     <div className="w-full">
       {projectData?.activityTypes?.map((item, ind) => {

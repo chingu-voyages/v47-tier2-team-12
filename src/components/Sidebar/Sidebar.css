@@ -10,3 +10,6 @@
 .selected {
     background-color: rgb(192 132 252);
 }
+.activity-card {
+    border: 1px solid silver;
+}
