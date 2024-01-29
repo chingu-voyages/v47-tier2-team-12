@@ -3,11 +3,13 @@ import { Todo_context } from "../Context/Context";
 import Modal from "../../utilities/Modal/Modal";
 import "./Sidebar.css";
 import { Trash2 } from "react-feather";
+import Dashboard from "../Dashboard/Dashboard";
 
 const Sidebar = () => {
   const { setProjectData, setShowModal, globalData, setGlobalData } =
     useContext(Todo_context);
   const [currentSelectedInd, setCurrentSelectedInd] = useState(null);
+  const [showTask, setShowTask] = useState(true)
   const [categoryName, setCategoryName] = useState("");
   const [addNewActivity, setAddNewActivity] = useState([
     {
@@ -16,6 +18,9 @@ const Sidebar = () => {
       taskDescription: "",
     },
   ]);
+
+
+
   const handleInput = (event, type, ind) => {
     const value = event.target.value;
     const updatedActivities = [...addNewActivity];
@@ -52,30 +57,48 @@ const Sidebar = () => {
   };
   const handleDeleteRow = (index) => {
     const res = addNewActivity.filter(
-      (ele,ind) => ind !== index
+      (ele, ind) => ind !== index
     );
     setAddNewActivity(res);
   };
 
   return (
-    <aside className="app-sidear flex flex-column gap-2 p-2">
+    <aside className="app-sidear  flex flex-column gap-8 p-2">
       {globalData.map((ele, ind) => {
         return (
-          <div
-            key={ind}
-            className={`app-sidebar__item flex p-6 items-center justify-between gap-6 c-pointer ${
-              currentSelectedInd === ind ? "selected" : ""
-            }`}
-            onClick={() => {
-              setProjectData(ele);
-              setCurrentSelectedInd(ind);
-            }}
-          >
-            <h3>{ele.categoryName}</h3>{" "}
-            <span className="p-6 border-rounded-20">
-              {ele.activityTypes.length}
-            </span>
+          <div>
+
+            <div
+              key={ind}
+              className={`app-sidebar__item  flex p-6 items-center justify-between gap-12  c-pointer ${currentSelectedInd === ind ? "selected" : ""
+                }`}
+              onClick={() => {
+                setCurrentSelectedInd(ind);
+              }}
+            >
+              <h3>{ele.categoryName}</h3>{" "}
+              <span className="p-6 border-rounded-20">
+                {ele.activityTypes.length}
+              </span>
+            </div>
+
+            <div className={`activity-container p-10 ${currentSelectedInd == ind ? '' : 'showTask'}`}>
+              {ele?.activityTypes?.map((item, ind) => {
+                return (
+                  <div key={ind} >
+                    <h3 className=" font-weight-600  font-bold activity-name">{item.activityName}</h3>
+                    <div>
+                      {item.Tasks.map((ele, ind) => {
+                        return <div className="tasks" key={ind}>{ele.taskName}</div>;
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
+
         );
       })}
       <div className="pt-2 m-4">
@@ -120,9 +143,8 @@ const Sidebar = () => {
               return (
                 <div
                   key={ind}
-                  className={`flex ${
-                    ind !== 0 ? "gap-20 items-end" : "justify-between"
-                  } `}
+                  className={`flex ${ind !== 0 ? "gap-20 items-end" : "justify-between"
+                    } `}
                 >
                   <div className="flex gap-8 justify-between">
                     <div>
