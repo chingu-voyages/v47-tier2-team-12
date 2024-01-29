@@ -49,3 +49,7 @@
 .activity-inner-container {
     padding-top: 1rem;
 }
+
+.trash-icon {
+    cursor: pointer;
+}

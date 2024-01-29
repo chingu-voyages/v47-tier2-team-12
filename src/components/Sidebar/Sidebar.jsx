@@ -70,21 +70,18 @@ const Sidebar = () => {
 
             <div
               key={ind}
-              className={`app-sidebar__item  flex p-6 items-center justify-between gap-12  c-pointer ${currentSelectedInd === ind ? "selected" : ""
+              className={`app-sidebar__item  flex  items-center justify-between gap-12  c-pointer ${currentSelectedInd === ind ? "selected" : ""
                 }`}
               onClick={() => {
                 setProjectData(ele)
                 setCurrentSelectedInd(ind);
               }}
             >
-              <h3>{ele.categoryName}</h3>{" "}
+              <h3 className="categoryName">{ele.categoryName}</h3>{" "}
               <span className="p-6 border-rounded-20">
                 {ele.activityTypes.length}
               </span>
             </div>
-
-
-
 
           </div>
 
