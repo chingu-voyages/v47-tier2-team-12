@@ -8,11 +8,18 @@ const Dashboard = () => {
   const { projectData, setProjectData } = useContext(Todo_context);
   // console.log(projectData, "project");
 
-  function handleDelete(ind) {
-    const newData = projectData.filter((index) => ind !== index)
-    setProjectData(newData)
-    consoel.log(ind)
+  function handleDelete(id) {
+    const newData = projectData?.activityTypes.map((item) => ({
+      ...item,
+      Tasks: item.Tasks.filter((task, index) => task.id !== id),
+    }));
+
+    setProjectData(newData);
+    console.log(newData);
+    console.log(Math.random())
   }
+
+
 
 
   return (
@@ -22,12 +29,12 @@ const Dashboard = () => {
           <div key={ind} className="activity-inner-container">
             <h3 className=" font-weight-600  font-bold activity-name  ">{item.activityName}</h3>
             <div>
-              {item.Tasks.map((ele, ind) => {
-                return <div className="tasks pl-8" key={ind}>
+              {item.Tasks.map((ele, index) => {
+                return <div className="tasks pl-8" key={index}>
                   <div className="flex gap-8 ">
                     <p className="inline days">{ele.days[0]}</p>
                     {ele.taskName}
-                    <button onClick={() => handleDelete(ind)}>
+                    <button onClick={() => handleDelete(ele.id)}>
                       <Trash2 className="trash-icon" size={20} color="red" />
                     </button>
                   </div>

@@ -35,6 +35,8 @@ const Sidebar = () => {
           taskName: ele.taskName,
           taskDescription: ele.taskDescription,
           days: ["monday"],
+          id: Math.random(),
+
         },
       ],
     }));
@@ -52,6 +54,8 @@ const Sidebar = () => {
         activityName: "",
         taskName: "",
         taskDescription: "",
+        id: '',
+
       },
     ]);
   };
