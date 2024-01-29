@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Todo_context } from "../Context/Context";
-
+import './Dashboard.css';
 const Dashboard = () => {
   const { projectData, setProjectData } = useContext(Todo_context);
   // console.log(projectData, "project");
   return (
-    <div className="w-full">
+    <div className="dashboard-container p-12">
       {projectData?.activityTypes?.map((item, ind) => {
         return (
           <div key={ind}>

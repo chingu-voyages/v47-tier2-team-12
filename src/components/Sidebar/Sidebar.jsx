@@ -11,6 +11,7 @@ const Sidebar = () => {
   const [categoryName, setCategoryName] = useState("");
   const [addNewActivity, setAddNewActivity] = useState([
     {
+      id:0,
       activityName: "",
       taskName: "",
       taskDescription: "",
@@ -33,6 +34,14 @@ const Sidebar = () => {
         },
       ],
     }));
+    setAddNewActivity([
+      {
+        id:0,
+        activityName: "",
+        taskName: "",
+        taskDescription: "",
+      },
+    ]);
     const temp = {
       categoryName: categoryName,
       activityTypes: newData,
@@ -40,10 +49,18 @@ const Sidebar = () => {
     setGlobalData([...globalData, temp]);
     setShowModal(false);
   };
+  function generateUniqueNumber() {
+    const timestamp = new Date().getTime();
+    const randomNumber = Math.floor(Math.random() * 1000);
+    const uniqueNumber = timestamp + randomNumber;
+    return uniqueNumber;
+  }
   const handleAddNewActivity = () => {
+    const {id}=addNewActivity;
     setAddNewActivity([
       ...addNewActivity,
       {
+        id:generateUniqueNumber(),
         activityName: "",
         taskName: "",
         taskDescription: "",
@@ -51,9 +68,7 @@ const Sidebar = () => {
     ]);
   };
   const handleDeleteRow = (index) => {
-    const res = addNewActivity.filter(
-      (ele,ind) => ind !== index
-    );
+    const res = addNewActivity.filter((ele, ind) => ind !== index);
     setAddNewActivity(res);
   };
 
@@ -63,7 +78,7 @@ const Sidebar = () => {
         return (
           <div
             key={ind}
-            className={`app-sidebar__item flex p-6 items-center justify-between gap-6 c-pointer ${
+            className={`app-sidebar__item flex m-4 items-center justify-between gap-6 c-pointer ${
               currentSelectedInd === ind ? "selected" : ""
             }`}
             onClick={() => {
@@ -71,32 +86,24 @@ const Sidebar = () => {
               setCurrentSelectedInd(ind);
             }}
           >
-            <h3>{ele.categoryName}</h3>{" "}
-            <span className="p-6 border-rounded-20">
+            <h3 className="color-white">{ele.categoryName}</h3>{" "}
+            <span className="border-rounded-20 activity-type-length">
               {ele.activityTypes.length}
             </span>
           </div>
         );
       })}
-      <div className="pt-2 m-4">
-        <button
-          className="w-full p-4 c-pointer"
-          onClick={() => setShowModal(true)}
-        >
-          Add More Project
-        </button>
-      </div>
       <Modal
         title="Add New Category"
         footer={
           <>
             <button
-              className="p-8 c-pointer"
+              className="c-pointer cancel-btn"
               onClick={() => setShowModal(false)}
             >
               Cancel
             </button>
-            <button className="p-8 c-pointer" onClick={handleActivitySave}>
+            <button className="c-pointer save-btn" onClick={handleActivitySave}>
               Save
             </button>
           </>
@@ -105,7 +112,7 @@ const Sidebar = () => {
       >
         <div className="flex flex-column gap-2">
           <div>
-            <label>Category Name:</label>
+            <label className="font-weight-500 text-size-16">Category Name:</label>
             <br />
             <input
               type="text"
@@ -119,12 +126,12 @@ const Sidebar = () => {
             {addNewActivity.map((ele, ind) => {
               return (
                 <div
-                  key={ind}
+                  key={ele?.id}
                   className={`flex ${
                     ind !== 0 ? "gap-20 items-end" : "justify-between"
                   } `}
                 >
-                  <div className="flex gap-8 justify-between">
+                  <div className="flex gap-8 justify-between flex-wrap">
                     <div>
                       <label>Activity Name:</label>
                       <br />
@@ -162,7 +169,7 @@ const Sidebar = () => {
                   <span
                     className="c-pointer"
                     title="delete"
-                    onClick={() => handleDeleteRow(res)}
+                    onClick={() => handleDeleteRow(ind)}
                     style={{ display: ind === 0 ? "none" : "block" }}
                   >
                     <Trash2 size={20} color="red" />
@@ -174,7 +181,7 @@ const Sidebar = () => {
           <div className="flex pt-4">
             {" "}
             <button
-              className="c-pointer"
+              className="c-pointer add-more-activity-btn"
               onClick={() => handleAddNewActivity()}
             >
               Add more activity

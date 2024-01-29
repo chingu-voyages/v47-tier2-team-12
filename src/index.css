@@ -42,6 +42,13 @@ ul li {
 :root {
   font-size: 62.5%;
   /* 1rem = 10px (62.5% of 16px, which is the default font size) */
+   /* Border Radius */
+   --radius-rounded-2: 0.2rem;
+   --radius-rounded-4: 0.4rem;
+   --radius-rounded-5: 0.5rem;
+   --radius-rounded-6: 0.6rem;
+   --radius-rounded-8: 0.8rem;
+   --radius-rounded--Cirlce: 50%;
 }
 /* #root {
   min-height: 100vh;
@@ -253,6 +260,36 @@ ul li {
 }
 .m-40 {
   margin: 4rem;
+}
+.ml-2 {
+  margin-left: 0.2rem;
+}
+.ml-4 {
+  margin-left: 0.4rem;
+}
+.ml-6 {
+  margin-left: 0.6rem;
+}
+.ml-8 {
+  margin-left: 0.8rem;
+}
+.ml-10 {
+  margin-left: 1rem;
+}
+.ml-12 {
+  margin-left: 1.2rem;
+}
+.ml-14 {
+  margin-left: 1.4rem;
+}
+.ml-16 {
+  margin-left: 1.6rem;
+}
+.ml-18 {
+  margin-left: 1.8rem;
+}
+.ml-20 {
+  margin-left: 2rem;
 }
 /* margin end */
 /* Typography */
@@ -506,4 +543,17 @@ ul li {
 }
 .c-default {
   cursor: default;
+}
+/* color */
+.color-white {
+  color: #fff;
+}
+.color-black {
+  color: #000;
+}
+.bg-white {
+  background-color: #fff;
+}
+.bg-black {
+  background-color: #000;
 }

@@ -1,0 +1,4 @@
+.dashboard-container {
+    width: calc(100% - 22rem);
+    margin-left: 22rem;
+}
