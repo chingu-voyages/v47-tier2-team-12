@@ -63,7 +63,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="app-sidear  flex flex-column gap-8 p-2">
+    <aside className="app-sidear  flex gap-8 p-2">
       {globalData.map((ele, ind) => {
         return (
           <div>
@@ -73,6 +73,7 @@ const Sidebar = () => {
               className={`app-sidebar__item  flex p-6 items-center justify-between gap-12  c-pointer ${currentSelectedInd === ind ? "selected" : ""
                 }`}
               onClick={() => {
+                setProjectData(ele)
                 setCurrentSelectedInd(ind);
               }}
             >
@@ -82,20 +83,8 @@ const Sidebar = () => {
               </span>
             </div>
 
-            <div className={`activity-container p-10 ${currentSelectedInd == ind ? '' : 'showTask'}`}>
-              {ele?.activityTypes?.map((item, ind) => {
-                return (
-                  <div key={ind} >
-                    <h3 className=" font-weight-600  font-bold activity-name">{item.activityName}</h3>
-                    <div>
-                      {item.Tasks.map((ele, ind) => {
-                        return <div className="tasks" key={ind}>{ele.taskName}</div>;
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+
+
 
           </div>
 

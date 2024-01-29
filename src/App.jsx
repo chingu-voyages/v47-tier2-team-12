@@ -4,8 +4,9 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 const App = () => {
   return (
-    <div className='app-wrapper flex'>
+    <div className='app-wrapper flex flex-column'>
       <Sidebar />
+      <Dashboard />
     </div>
   )
 }

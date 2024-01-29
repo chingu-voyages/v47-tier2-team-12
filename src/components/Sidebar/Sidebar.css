@@ -1,7 +1,6 @@
 .app-sidear {
-    width: 25%;
-    height: 80vh;
-    border: 1px solid black;
+    width: 100%;
+
 }
 
 .app-sidebar__item {
@@ -18,9 +17,7 @@
     background-color: rgb(192 132 252);
 }
 
-.activity-card {
-    border: 1px solid silver;
-}
+
 
 .showTask {
     display: none;
@@ -33,11 +30,40 @@
 .activity-name {
     color: #3468C0;
     font-size: 2.5rem;
-    margin-top: 1em;
+    padding-left: 1em;
 }
 
-.tasks {
+.tasks div {
     color: #3c4c75;
     font-size: 2rem;
-    padding-top: 1em;
+    padding: 1em 0;
+    font-weight: 600;
+}
+
+.pl-8 {
+    padding-left: 1.5em;
+}
+
+.days-name {
+    font-size: 1.5rem;
+}
+
+.tasks:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, 0.14);
+}
+
+.tasks:nth-of-type(odd) {
+    background-color: rgb(181, 234, 243);
+}
+
+
+
+.days {
+    text-transform: capitalize;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.activity-inner-container {
+    padding-top: 1rem;
 }
