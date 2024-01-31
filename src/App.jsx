@@ -7,9 +7,9 @@ const App = () => {
   return (
     <div className="app-wrapper">
       <Navbar />
-      <div className="flex gap-4">
-      <Sidebar />
-      <Dashboard />
+      <div className="flex">
+        <Sidebar />
+        <Dashboard />
       </div>
     </div>
   );

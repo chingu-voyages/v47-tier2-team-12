@@ -1,7 +1,6 @@
 .app-sidear {
     width: 18rem;
     height: 90vh;
-    overflow: auto;
     background-color: hsl(243, 75%, 65%);
 }
 

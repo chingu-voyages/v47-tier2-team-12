@@ -42,15 +42,18 @@ const Dashboard = () => {
       {projectData?.activityTypes?.map((item, ind) => {
         return (
           <div key={ind} className="activity-inner-container">
-            <h3 className=" font-weight-600  font-bold activity-name  ">{item.activityName}</h3>
+            <h3 className=" activity-name  ">{item.activityName}</h3>
             <div>
               {item.Tasks.map((ele, index) => {
-                return <div className="tasks pl-8" key={index}>
-                  <div className="flex gap-8 ">
-                    <p className="inline days">{ele.days[0]}</p>
-                    {ele.taskName}
-                    <button onClick={() => handleDelete(ele.id)}>
-                      <Trash2 className="trash-icon" size={20} color="red" />
+                return <div className="tasks-container " key={index}>
+                  <div className="task-inner-container">
+                    <div>
+
+                      <p className=" days">{ele.days[0]}</p>
+                      <p className="task-name">{ele.taskName}</p>
+                    </div>
+                    <button className="trash-icon" onClick={() => handleDelete(ele.id)}>
+                      <Trash2 size={20} />
                     </button>
                   </div>
                 </div>;
