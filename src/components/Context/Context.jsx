@@ -25,7 +25,8 @@ const Context = (props) => {
   const [showModal, setShowModal] = useState(false);
 
 
-  console.log(globalData)
+
+
   return (
     <Todo_context.Provider
       value={{

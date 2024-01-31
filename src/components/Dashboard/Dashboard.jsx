@@ -9,10 +9,29 @@ const Dashboard = () => {
   // console.log(projectData, "project");
 
   function handleDelete(id) {
+    // Create a new array with updated tasks excluding the one with the specified id
+    const updatedTasks = projectData.activityTypes.map(activityType => ({
+      ...activityType,
+      Tasks: activityType.Tasks.filter(task => task.id !== id),
+    }));
 
+    // Create a new array with updated activityTypes
+    const updatedActivityTypes = projectData.activityTypes.map((activityType, index) => ({
+      ...activityType,
+      Tasks: updatedTasks[index].Tasks,
+    }));
 
-    console.log(id);
+    // Create a new projectData object with the updated activityTypes
+    const updatedProjectData = {
+      ...projectData,
+      activityTypes: updatedActivityTypes,
+    };
+
+    // Set the updated projectData to the state
+    setProjectData(updatedProjectData);
+
   }
+
 
 
 
