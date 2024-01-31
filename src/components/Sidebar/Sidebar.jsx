@@ -70,7 +70,7 @@ const Sidebar = () => {
     <aside className="app-sidear  flex gap-8 p-2">
       {globalData.map((ele, ind) => {
         return (
-          <div>
+          <div key={ind}>
 
             <div
               key={ind}

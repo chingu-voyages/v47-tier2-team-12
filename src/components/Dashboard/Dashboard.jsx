@@ -9,14 +9,9 @@ const Dashboard = () => {
   // console.log(projectData, "project");
 
   function handleDelete(id) {
-    const newData = projectData?.activityTypes.map((item) => ({
-      ...item,
-      Tasks: item.Tasks.filter((task, index) => task.id !== id),
-    }));
 
-    setProjectData(newData);
-    console.log(newData);
-    console.log(Math.random())
+
+    console.log(id);
   }
 
 
