@@ -9,6 +9,7 @@
 
 .activity-container {
     background-color: hsla(243, 75%, 75%, 0.537);
+    width: 220px;
 }
 
 .activity-name {
