@@ -9,14 +9,16 @@
 
 .activity-container {
     background-color: hsla(243, 75%, 75%, 0.537);
-    width: 220px;
+}
+
+.activity-name-container {
+    border-right: 2px solid rgba(18, 13, 97, 0.314);
+    padding: 1em;
 }
 
 .activity-name {
     color: rgb(67 56 202);
     font-size: 2.5rem;
-    padding-left: 0.4em;
-    padding-bottom: 0.3em;
     font-family: 'roboto', sans-serif;
     font-weight: 500;
 }
@@ -27,18 +29,16 @@
     font-weight: 600;
 }
 
-.tasks-container {
-    padding-left: 1em;
-    padding-right: 1em;
-}
 
-.task-inner-container {
+
+
+
+.task-inner-container-2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: 1em 1em 1em 1em;
+    border-right: 2px solid rgba(238, 238, 242, 0.581);
 }
 
 .days {
@@ -68,20 +68,29 @@
 }
 
 
-
-.activity-inner-container {
-    padding-top: 1rem;
-}
-
 .trash-icon {
     cursor: pointer;
     border: none;
     background-color: transparent;
     color: hsl(348, 63%, 47%);
-    padding: 0.5em;
+    padding: 0.3em;
 }
 
 
 .trash-icon:hover {
     background-color: hsla(240, 33%, 97%, 0.202);
+}
+
+.activity-inner-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    grid-gap: 1em;
+}
+
+.task-inner-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    grid-gap: 1em;
 }
