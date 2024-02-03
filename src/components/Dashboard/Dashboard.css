@@ -84,8 +84,7 @@
 .activity-inner-container {
     display: grid;
     grid-template-columns: 30% 70%;
-    align-items: center;
-    grid-gap: 1em;
+    overflow: hidden;
 }
 
 .task-inner-container {
@@ -93,4 +92,35 @@
     grid-template-columns: 30% 70%;
     align-items: center;
     grid-gap: 1em;
+    overflow: hidden;
+}
+
+.day-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.day-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    border-right: 1px solid rgba(0, 0, 0, 0.37);
+    height: full;
+    padding: 1rem;
+}
+
+.day-inner-container p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'roboto';
+}
+
+.day-inner-container p:first-of-type {
+    border-bottom: 1px solid black;
+}
+
+.day-inner-container hr {
+    width: full;
 }

@@ -5,8 +5,12 @@ import './Dashboard.css'
 import { Trash2 } from "react-feather";
 
 
+
+
 const Dashboard = () => {
-  const { projectData, setProjectData } = useContext(Todo_context);
+
+
+  const { projectData, setProjectData, generateMonthData } = useContext(Todo_context);
   // console.log(projectData, "project");
 
   function handleDelete(id) {
@@ -34,7 +38,7 @@ const Dashboard = () => {
   }
 
 
-
+  const monthData = generateMonthData()
 
 
   return (
@@ -46,7 +50,16 @@ const Dashboard = () => {
               <div className="activity-name-container">
                 <h3 className="activity-name">{item.activityName}</h3>
               </div>
-              <div className="day-container">hi my name is pritam Chakroborty</div>
+              <div className="day-container">
+                {
+                  monthData.map(item => {
+                    return <div className="day-inner-container ">
+                      <p>{item.date}</p>
+                      <p>{item.nameOfDay}</p>
+                    </div>
+                  })
+                }
+              </div>
             </div>
             <div >
               {item.Tasks.map((ele, index) => {
