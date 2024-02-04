@@ -5,8 +5,12 @@ import './Dashboard.css'
 import { Trash2 } from "react-feather";
 
 
+
+
 const Dashboard = () => {
-  const { projectData, setProjectData } = useContext(Todo_context);
+
+
+  const { projectData, setProjectData, generateMonthData } = useContext(Todo_context);
   // console.log(projectData, "project");
 
   function handleDelete(id) {
@@ -34,27 +38,43 @@ const Dashboard = () => {
   }
 
 
-
+  const monthData = generateMonthData()
 
 
   return (
     <div className={`activity-container `}>
       {projectData?.activityTypes?.map((item, ind) => {
         return (
-          <div key={ind} className="activity-inner-container">
-            <h3 className=" activity-name  ">{item.activityName}</h3>
-            <div>
-              {item.Tasks.map((ele, index) => {
-                return <div className="tasks-container " key={index}>
-                  <div className="task-inner-container">
-                    <div>
-
-                      <p className=" days">{ele.days[0]}</p>
-                      <p className="task-name">{ele.taskName}</p>
+          <div key={ind} >
+            <div className="activity-inner-container">
+              <div className="activity-name-container">
+                <h3 className="activity-name">{item.activityName}</h3>
+              </div>
+              <div className="day-container">
+                {
+                  monthData.map(item => {
+                    return <div className="day-inner-container ">
+                      <p>{item.date}</p>
+                      <p>{item.nameOfDay}</p>
                     </div>
-                    <button className="trash-icon" onClick={() => handleDelete(ele.id)}>
-                      <Trash2 size={20} />
-                    </button>
+                  })
+                }
+              </div>
+            </div>
+            <div >
+              {item.Tasks.map((ele, index) => {
+                return <div className="tasks-container" key={index}>
+                  <div className="task-inner-container">
+                    <div className="task-inner-container-2">
+                      <div>
+                        <p className=" days">{ele.days[0]}</p>
+                        <p className="task-name">{ele.taskName}</p>
+                      </div>
+                      <button className="trash-icon" onClick={() => handleDelete(ele.id)}>
+                        <Trash2 size={20} />
+                      </button>
+                    </div>
+                    <div>hi my name is pritam Chakroborty</div>
                   </div>
                 </div>;
               })}

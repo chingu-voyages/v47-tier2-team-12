@@ -3,6 +3,7 @@ import todo_global_data from "../Data/Data";
 export const Todo_context = createContext(null);
 // For creating Unique id for each task 
 import { nanoid } from "nanoid";
+import { generateMonthData } from '../../utilities/MonthDataGenerator/MonthDataGenerator'
 
 
 const Context = (props) => {
@@ -36,6 +37,7 @@ const Context = (props) => {
         setShowModal,
         globalData,
         setGlobalData,
+        generateMonthData
       }}
     >
       {props.children}
