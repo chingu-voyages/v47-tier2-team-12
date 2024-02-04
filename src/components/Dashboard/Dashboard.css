@@ -91,7 +91,7 @@
     display: grid;
     grid-template-columns: 30% 70%;
     align-items: center;
-    grid-gap: 1em;
+    grid-gap: 0.01em;
     overflow: hidden;
 }
 
@@ -109,6 +109,33 @@
     border-right: 1px solid rgba(0, 0, 0, 0.37);
     height: full;
     padding: 1rem;
+}
+.check-boxes-inner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* border-right: 1px solid rgba(0, 0, 0, 0.37); */
+    height: 100%;
+    padding: 1rem;
+}
+.main-div-checkboxes{
+    display: flex;
+    height: 100%;
+}
+.input-checked-box{
+    margin: 0px;
+}
+.week-end{
+    background-color:orange ;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.visiblity-hidden{
+    visibility: hidden;
+    padding: inherit;
+
 }
 
 .day-inner-container p {
