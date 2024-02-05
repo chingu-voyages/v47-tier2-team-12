@@ -6,7 +6,8 @@ import { Trash2 } from "react-feather";
 const Dashboard = () => {
   const { projectData, setProjectData, generateMonthData } =
     useContext(Todo_context);
-  const [checked, setChecked] = useState([]);
+  console.log(projectData)
+  // const [checked, setChecked] = useState([]);
 
   // console.log(projectData, "project");
 
@@ -42,7 +43,7 @@ const Dashboard = () => {
       {projectData?.activityTypes?.map((item, ind) => {
         return (
           <div key={ind}>
-            
+
             <div className="activity-inner-container">
               <div className="activity-name-container">
                 <h3 className="activity-name">{item.activityName}</h3>
@@ -51,14 +52,14 @@ const Dashboard = () => {
                 {monthData.map((item, index) => {
                   return (
                     <>
-                    <div key={index} className="day-inner-container ">
-                      <p>{item.date}</p>
-                      <p>{item.nameOfDay}</p>
-                    </div>
-                    {(index % 7 == 6) && 
-                      <div className="week-end" >WK</div>
+                      <div key={index} className="day-inner-container ">
+                        <p>{item.date}</p>
+                        <p>{item.nameOfDay}</p>
+                      </div>
+                      {(index % 7 == 6) &&
+                        <div className="week-end" >WK</div>
                       }
-                      </>
+                    </>
                   );
                 })}
               </div>
@@ -84,17 +85,17 @@ const Dashboard = () => {
                         {monthData.map((item, index) => {
                           return (
                             <>
-                            <div key={index} className="check-boxes-inner-container ">
-                              <input
-                                className="input-checked-box"
-                                // defaultChecked={
-                                //   checked?.some(
-                                //     (checked) => checked?.index == index
-                                //   )
-                                //     ? true
-                                //     : false
-                                // }
-                                type="checkbox"
+                              <div key={index} className="check-boxes-inner-container ">
+                                <input
+                                  className="input-checked-box"
+                                  // defaultChecked={
+                                  //   checked?.some(
+                                  //     (checked) => checked?.index == index
+                                  //   )
+                                  //     ? true
+                                  //     : false
+                                  // }
+                                  type="checkbox"
                                 // onClick={(e) => {
                                 //   if (
                                 //     !checked.some(
@@ -113,10 +114,10 @@ const Dashboard = () => {
                                 //     ]);
                                 //   }
                                 // }}
-                              />
-                            </div>
-                             {(index % 7 == 6) && 
-                              <div className="week-end" ><p className="visiblity-hidden">WK</p></div>
+                                />
+                              </div>
+                              {(index % 7 == 6) &&
+                                <div className="week-end" ><p className="visiblity-hidden">WK</p></div>
                               }
                             </>
                           );
