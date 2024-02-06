@@ -11,6 +11,7 @@ const Context = (props) => {
   // here the whole data is being recreated with unique id for each task
   const dataWithId = todo_global_data.map(category => ({
     ...category,
+    id: nanoid(),
     activityTypes: category.activityTypes.map(activityType => ({
       ...activityType,
       Tasks: activityType.Tasks.map(task => ({
