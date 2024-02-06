@@ -4,14 +4,15 @@ import "./Dashboard.css";
 import { Trash2 } from "react-feather";
 
 const Dashboard = () => {
-  const { projectData, setProjectData, generateMonthData } =
+  const { projectData, setProjectData, globalData,
+    setGlobalData, generateMonthData } =
     useContext(Todo_context);
-  console.log(projectData)
   // const [checked, setChecked] = useState([]);
   const [checkedState, setCheckedState] = useState({});
 
 
-  // console.log(projectData, "project");
+  console.log(projectData, "project");
+  // console.log(globalData)
 
   function handleDelete(id) {
     // Create a new array with updated tasks excluding the one with the specified id
@@ -20,22 +21,28 @@ const Dashboard = () => {
       Tasks: activityType.Tasks.filter((task) => task.id !== id),
     }));
 
-    // Create a new array with updated activityTypes
+    /* Create a new array with updated activityTypes
     const updatedActivityTypes = projectData.activityTypes.map(
       (activityType, index) => ({
         ...activityType,
         Tasks: updatedTasks[index].Tasks,
       })
-    );
+     );*/
 
-    // Create a new projectData object with the updated activityTypes
+    // Create a new projectData object with the updated tasks
     const updatedProjectData = {
       ...projectData,
-      activityTypes: updatedActivityTypes,
+      activityTypes: updatedTasks,
     };
+
+    const updateGlobalData = globalData.map(data => data.id === updatedProjectData.id ? updatedProjectData : data)
 
     // Set the updated projectData to the state
     setProjectData(updatedProjectData);
+
+    // Set the updated globalData to the state
+    setGlobalData(updateGlobalData)
+
   }
 
   function handleCheck(taskId, date) {
