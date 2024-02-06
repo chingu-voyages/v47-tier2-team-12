@@ -2,7 +2,7 @@
 
 export function generateMonthData() {
     const currentDate = new Date();
-    const currentMonth = 0;
+    const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
 
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
