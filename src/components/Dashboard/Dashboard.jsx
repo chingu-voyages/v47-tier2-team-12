@@ -8,6 +8,8 @@ const Dashboard = () => {
     useContext(Todo_context);
   console.log(projectData)
   // const [checked, setChecked] = useState([]);
+  const [checkedState, setCheckedState] = useState({});
+
 
   // console.log(projectData, "project");
 
@@ -36,6 +38,11 @@ const Dashboard = () => {
     setProjectData(updatedProjectData);
   }
 
+  function handleCheck(taskId, date) {
+    const key = `${taskId}_${date}`;
+    const newCheckedState = { ...checkedState, [key]: !checkedState[key] };
+    setCheckedState(newCheckedState);
+  }
   const monthData = generateMonthData();
 
   return (
@@ -65,55 +72,35 @@ const Dashboard = () => {
               </div>
             </div>
             <div>
-              {item.Tasks.map((ele, index) => {
+              {item.Tasks.map((task, index) => {
                 return (
                   <div className="tasks-container" key={index}>
                     <div className="task-inner-container">
                       <div className="task-inner-container-2">
                         <div>
-                          <p className=" days">{ele.days[0]}</p>
-                          <p className="task-name">{ele.taskName}</p>
+                          <p className=" days">{task.days[0]}</p>
+                          <p className="task-name">{task.taskName}</p>
                         </div>
                         <button
                           className="trash-icon"
-                          onClick={() => handleDelete(ele.id)}
+                          onClick={() => handleDelete(task.id)}
                         >
                           <Trash2 size={20} />
                         </button>
                       </div>
                       <div className="main-div-checkboxes">
-                        {monthData.map((item, index) => {
+                        {monthData.map((day, index) => {
+                          const key = `${task.id}_${day.date}`;
                           return (
                             <>
                               <div key={index} className="check-boxes-inner-container ">
                                 <input
                                   className="input-checked-box"
-                                  // defaultChecked={
-                                  //   checked?.some(
-                                  //     (checked) => checked?.index == index
-                                  //   )
-                                  //     ? true
-                                  //     : false
-                                  // }
+                                  id={day.date}
                                   type="checkbox"
-                                // onClick={(e) => {
-                                //   if (
-                                //     !checked.some(
-                                //       (item2) => item2?.index == index
-                                //     )
-                                //   ) {
-                                //     setChecked([
-                                //       ...checked,
-                                //       { index: index, value: "checked" },
-                                //     ]);
-                                //   } else {
-                                //     setChecked([
-                                //       ...checked?.filter(
-                                //         (item3) => item3?.index != index
-                                //       ),
-                                //     ]);
-                                //   }
-                                // }}
+                                  checked={checkedState[key] || false}
+                                  onChange={() => handleCheck(task.id, day.date)}
+
                                 />
                               </div>
                               {(index % 7 == 6) &&
