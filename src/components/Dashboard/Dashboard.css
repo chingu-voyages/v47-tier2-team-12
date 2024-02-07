@@ -87,6 +87,25 @@
     overflow: hidden;
 }
 
+.activity-name-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.update-icon {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: hsl(221, 36%, 41%);
+    padding: 0.3em;
+}
+
+.update-icon:hover {
+    background-color: hsla(240, 33%, 97%, 0.202);
+}
+
 .task-inner-container {
     display: grid;
     grid-template-columns: 30% 70%;
@@ -110,6 +129,7 @@
     height: full;
     padding: 1rem;
 }
+
 .check-boxes-inner-container {
     display: flex;
     justify-content: center;
@@ -119,20 +139,24 @@
     height: 100%;
     padding: 1rem;
 }
-.main-div-checkboxes{
+
+.main-div-checkboxes {
     display: flex;
     height: 100%;
 }
-.input-checked-box{
+
+.input-checked-box {
     margin: 0px;
 }
-.week-end{
-    background-color:orange ;
+
+.week-end {
+    background-color: orange;
     text-align: center;
     display: flex;
     align-items: center;
 }
-.visiblity-hidden{
+
+.visiblity-hidden {
     visibility: hidden;
     padding: inherit;
 

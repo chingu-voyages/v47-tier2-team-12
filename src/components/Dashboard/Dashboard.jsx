@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { Todo_context } from "../Context/Context";
 import "./Dashboard.css";
 import { Trash2 } from "react-feather";
+import { FaRegPenToSquare } from "react-icons/fa6";
+
 
 const Dashboard = () => {
   const { projectData, setProjectData, globalData,
@@ -64,6 +66,7 @@ const Dashboard = () => {
             <div className="activity-inner-container">
               <div className="activity-name-container">
                 <h3 className="activity-name">{item.activityName}</h3>
+                <FaRegPenToSquare className="update-icon" size={25} />
               </div>
               <div className="day-container">
                 {monthData.map((item, index) => {
