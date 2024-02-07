@@ -7,11 +7,14 @@ const Dashboard = () => {
   const { projectData, setProjectData, globalData,
     setGlobalData, generateMonthData } =
     useContext(Todo_context);
-  // const [checked, setChecked] = useState([]);
   const [checkedState, setCheckedState] = useState({});
 
+  React.useEffect(() => {
 
-  console.log(projectData, "project");
+    const tempdata = globalData[0]
+    setProjectData(tempdata)
+
+  }, [])
   // console.log(globalData)
 
   function handleDelete(id) {
@@ -121,6 +124,10 @@ const Dashboard = () => {
                   </div>
                 );
               })}
+
+              {
+                item.Tasks.length === 0 && <h1>No task under this section</h1>
+              }
             </div>
           </div>
         );
