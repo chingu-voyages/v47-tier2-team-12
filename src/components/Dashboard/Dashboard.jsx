@@ -3,6 +3,7 @@ import { Todo_context } from "../Context/Context";
 import "./Dashboard.css";
 import { Trash2 } from "react-feather";
 import { FaRegPenToSquare } from "react-icons/fa6";
+import Modal2 from "../../utilities/Modal/Modal2";
 
 
 const Dashboard = () => {
@@ -10,6 +11,8 @@ const Dashboard = () => {
     setGlobalData, generateMonthData } =
     useContext(Todo_context);
   const [checkedState, setCheckedState] = useState({});
+  const [showModal, setShowModal] = React.useState(false);
+  const monthData = generateMonthData();
 
   React.useEffect(() => {
 
@@ -55,7 +58,12 @@ const Dashboard = () => {
     const newCheckedState = { ...checkedState, [key]: !checkedState[key] };
     setCheckedState(newCheckedState);
   }
-  const monthData = generateMonthData();
+
+
+  function handleTaskUpdate() {
+    console.log('data updated')
+    setShowModal(!showModal)
+  }
 
   return (
     <div className={`activity-container `}>
@@ -66,7 +74,12 @@ const Dashboard = () => {
             <div className="activity-inner-container">
               <div className="activity-name-container">
                 <h3 className="activity-name">{item.activityName}</h3>
-                <FaRegPenToSquare className="update-icon" size={25} />
+                <FaRegPenToSquare
+                  className="update-icon"
+                  size={25}
+                  onClick={handleTaskUpdate}
+                />
+
               </div>
               <div className="day-container">
                 {monthData.map((item, index) => {
@@ -135,6 +148,8 @@ const Dashboard = () => {
           </div>
         );
       })}
+      {showModal && <Modal2 />}
+
     </div>
   );
 };

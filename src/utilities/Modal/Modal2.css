@@ -1,0 +1,47 @@
+.modal2-container {
+    width: 60%;
+    height: 60%;
+    background-color: rgb(232, 227, 227);
+    position: absolute;
+    left: 25%;
+    top: 25%;
+
+}
+
+.modal2-inner-container {
+    padding: 2em;
+    display: grid;
+    grid-template-rows: 10% 70% 20%;
+    height: 100%;
+}
+
+.modal2-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    padding-left: 0;
+}
+
+.modal2-header h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.task-heading {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.modal2-task-inner-container {
+    padding: 0.5em;
+    border: 1px solid black;
+    display: flex;
+}
+
+.add-more-task-btn {
+    justify-self: left;
+}
+
+.modal2-container-footer {
+    border: 1px solid black;
+}
