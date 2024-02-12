@@ -25,9 +25,18 @@ const Dashboard = () => {
     // Create a new array with updated tasks excluding the one with the specified id
     const updatedTasks = projectData.activityTypes.map((activityType) => ({
       ...activityType,
-      Tasks: activityType.Tasks.map((task) => task.id !== id),
+      Tasks: activityType.Tasks.filter((task) => task.id !== id),
     }));
 
+    /* Create a new array with updated activityTypes
+    const updatedActivityTypes = projectData.activityTypes.map(
+      (activityType, index) => ({
+        ...activityType,
+        Tasks: updatedTasks[index].Tasks,
+      })
+     );*/
+
+    // Create a new projectData object with the updated tasks
     const updatedProjectData = {
       ...projectData,
       activityTypes: updatedTasks,
@@ -139,11 +148,11 @@ const Dashboard = () => {
           </div>
         );
       })}
-      {showModal && <Modal2
+      {/* {showModal && <Modal2
         updateItem={updateItem}
         showModal={showModal}
         setShowModal={setShowModal}
-      />}
+      />} */}
 
     </div>
   );
