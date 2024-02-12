@@ -25,9 +25,7 @@ const Context = (props) => {
   const [globalData, setGlobalData] = useState(dataWithId);
   const [projectData, setProjectData] = useState([]);
   const [showModal, setShowModal] = useState(false);
-
-
-
+  const [showSidebar,setshowSidebar] = useState(false)
 
   return (
     <Todo_context.Provider
@@ -38,7 +36,9 @@ const Context = (props) => {
         setShowModal,
         globalData,
         setGlobalData,
-        generateMonthData
+        generateMonthData,
+        showSidebar,
+        setshowSidebar
       }}
     >
       {props.children}

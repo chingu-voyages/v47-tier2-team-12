@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Roboto:wght@300;400;500&display=swap');
-
+@media (max-width: 1024px) {
+    .check-boxes-inner-container {
+    padding: 1.05rem !important;
+}
+    
+  }
 
 
 
@@ -40,6 +45,21 @@
     padding: 1em 1em 1em 1em;
     border-right: 2px solid rgba(238, 238, 242, 0.581);
 }
+@media (max-width: 425px) {
+    .task-inner-container-2 {
+        display: block;
+        text-align: center;
+        align-items: center;
+        padding: 1em 0.2em 1em 0.2em;
+        border-right: 2px solid rgba(238, 238, 242, 0.581);
+    }
+    .activity-name-container {
+        border-right: 2px solid rgba(18, 13, 97, 0.314);
+        padding: 1em;
+        text-align: center;
+    }
+    
+  }
 
 .days {
     font-size: 1.8rem;
@@ -86,6 +106,25 @@
     grid-template-columns: 30% 70%;
     overflow: hidden;
 }
+/* @media (min-width: 1025px) and (max-width:2560px) {
+    .activity-inner-container {
+        width: 100% !important;
+        display: grid !important;
+        grid-template-columns: 30% 100% !important;
+        overflow: hidden !important;
+    }
+    .task-inner-container {
+        display: grid !important;
+        grid-template-columns: 30% 100% !important;
+        align-items: center !important;
+        grid-gap: 0.01em !important;
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+   
+    
+  } */
+
 
 .task-inner-container {
     display: grid;
@@ -98,6 +137,7 @@
 .day-container {
     display: flex;
     justify-content: space-between;
+    overflow: auto;
 }
 
 .day-inner-container {
@@ -107,21 +147,25 @@
     align-items: center;
     overflow: hidden;
     border-right: 1px solid rgba(0, 0, 0, 0.37);
-    height: full;
+    height: 100%;
     padding: 1rem;
+    width: 100%;
 }
 .check-boxes-inner-container {
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* border-right: 1px solid rgba(0, 0, 0, 0.37); */
     height: 100%;
     padding: 1rem;
+    width: 100%;
 }
+
+
 .main-div-checkboxes{
     display: flex;
     height: 100%;
+    overflow-x: auto !important;
 }
 .input-checked-box{
     margin: 0px;

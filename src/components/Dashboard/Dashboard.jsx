@@ -56,6 +56,7 @@ const Dashboard = () => {
   const monthData = generateMonthData();
 
   return (
+    <div style={{overflowX:"auto"}}>
     <div className={`activity-container `}>
       {projectData?.activityTypes?.map((item, ind) => {
         return (
@@ -132,6 +133,7 @@ const Dashboard = () => {
           </div>
         );
       })}
+    </div>
     </div>
   );
 };
