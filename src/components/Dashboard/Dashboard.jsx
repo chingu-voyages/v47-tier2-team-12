@@ -8,10 +8,10 @@ import Modal2 from "../../utilities/Modal/Modal2";
 
 const Dashboard = () => {
   const { projectData, setProjectData, globalData,
-    setGlobalData, generateMonthData } =
-    useContext(Todo_context);
+    setGlobalData, generateMonthData } = useContext(Todo_context);
   const [checkedState, setCheckedState] = useState({});
   const [showModal, setShowModal] = React.useState(false);
+  const [updateItem, setUpdateItem] = React.useState(null)
   const monthData = generateMonthData();
 
   React.useEffect(() => {
@@ -20,24 +20,14 @@ const Dashboard = () => {
     setProjectData(tempdata)
 
   }, [])
-  // console.log(globalData)
 
   function handleDelete(id) {
     // Create a new array with updated tasks excluding the one with the specified id
     const updatedTasks = projectData.activityTypes.map((activityType) => ({
       ...activityType,
-      Tasks: activityType.Tasks.filter((task) => task.id !== id),
+      Tasks: activityType.Tasks.map((task) => task.id !== id),
     }));
 
-    /* Create a new array with updated activityTypes
-    const updatedActivityTypes = projectData.activityTypes.map(
-      (activityType, index) => ({
-        ...activityType,
-        Tasks: updatedTasks[index].Tasks,
-      })
-     );*/
-
-    // Create a new projectData object with the updated tasks
     const updatedProjectData = {
       ...projectData,
       activityTypes: updatedTasks,
@@ -60,9 +50,10 @@ const Dashboard = () => {
   }
 
 
-  function handleTaskUpdate() {
-    console.log('data updated')
+  function handleTaskUpdate(id) {
     setShowModal(!showModal)
+    setUpdateItem(id)
+
   }
 
   return (
@@ -77,7 +68,7 @@ const Dashboard = () => {
                 <FaRegPenToSquare
                   className="update-icon"
                   size={25}
-                  onClick={handleTaskUpdate}
+                  onClick={() => handleTaskUpdate(item.id)}
                 />
 
               </div>
@@ -104,7 +95,7 @@ const Dashboard = () => {
                     <div className="task-inner-container">
                       <div className="task-inner-container-2">
                         <div>
-                          <p className=" days">{task.days[0]}</p>
+                          <p className=" days">MONDAY </p>
                           <p className="task-name">{task.taskName}</p>
                         </div>
                         <button
@@ -148,7 +139,11 @@ const Dashboard = () => {
           </div>
         );
       })}
-      {showModal && <Modal2 />}
+      {showModal && <Modal2
+        updateItem={updateItem}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />}
 
     </div>
   );

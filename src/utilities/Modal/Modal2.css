@@ -45,3 +45,22 @@
 .modal2-container-footer {
     border: 1px solid black;
 }
+
+.cancel-btn {
+    background-color: #da2121e6;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.cross-icon {
+    color: rgba(89, 78, 78, 0.674);
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.cross-icon :hover {
+    color: rgba(238, 46, 46, 0.846);
+    background-color: hsla(0, 74%, 78%, 0.951);
+}

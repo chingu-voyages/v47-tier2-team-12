@@ -13,6 +13,7 @@ const Context = (props) => {
     ...category,
     id: nanoid(),
     activityTypes: category.activityTypes.map(activityType => ({
+      id: nanoid(),
       ...activityType,
       Tasks: activityType.Tasks.map(task => ({
         ...task,
