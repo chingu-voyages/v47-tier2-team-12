@@ -148,11 +148,11 @@ const Dashboard = () => {
           </div>
         );
       })}
-      {/* {showModal && <Modal2
+      {showModal && <Modal2
         updateItem={updateItem}
         showModal={showModal}
         setShowModal={setShowModal}
-      />} */}
+      />}
 
     </div>
   );

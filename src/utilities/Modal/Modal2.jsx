@@ -69,13 +69,12 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
 
     const handleSave = () => {
         setShowModal(!showModal);
-        console.log(updateItem);
 
         const updatedTasks = projectData.activityTypes.map((activityType) => {
             if (activityType.id === updateItem) {
                 return {
                     ...activityType,
-                    Tasks: [...activityType.Tasks, newActivity],
+                    Tasks: [...activityType.Tasks, ...newActivity],
                 };
             }
             return activityType;
@@ -88,12 +87,12 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
         };
 
         const updateGlobalData = globalData.map(data => data.id === updatedProjectData.id ? updatedProjectData : data);
-
+        console.log(updateGlobalData)
         // Set the updated projectData to the state
-        // setProjectData(updatedProjectData);
+        setProjectData(updatedProjectData);
 
         // Set the updated globalData to the state
-        // setGlobalData(updateGlobalData);
+        setGlobalData(updateGlobalData);
 
     };
 
