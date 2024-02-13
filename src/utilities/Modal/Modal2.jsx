@@ -68,33 +68,33 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
     }
 
     const handleSave = () => {
-        // setShowModal(!showModal);
-        // console.log(updateItem);
+        setShowModal(!showModal);
+        console.log(updateItem);
 
-        // const updatedTasks = projectData.activityTypes.map((activityType) => {
-        //     if (activityType.id === updateItem) {
-        //         return {
-        //             ...activityType,
-        //             Tasks: [...activityType.Tasks, newActivity], // Use spread operator to create a new array with the existing tasks and the new task
-        //         };
-        //     }
-        //     return activityType;
-        // });
+        const updatedTasks = projectData.activityTypes.map((activityType) => {
+            if (activityType.id === updateItem) {
+                return {
+                    ...activityType,
+                    Tasks: [...activityType.Tasks, newActivity],
+                };
+            }
+            return activityType;
+        });
 
 
-        // const updatedProjectData = {
-        //     ...projectData,
-        //     activityTypes: updatedTasks,
-        // };
+        const updatedProjectData = {
+            ...projectData,
+            activityTypes: updatedTasks,
+        };
 
-        // const updateGlobalData = globalData.map(data => data.id === updatedProjectData.id ? updatedProjectData : data);
+        const updateGlobalData = globalData.map(data => data.id === updatedProjectData.id ? updatedProjectData : data);
 
-        // // Set the updated projectData to the state
-        // // setProjectData(updatedProjectData);
+        // Set the updated projectData to the state
+        // setProjectData(updatedProjectData);
 
-        // // Set the updated globalData to the state
-        // // setGlobalData(updateGlobalData);
-        console.log(hiii)
+        // Set the updated globalData to the state
+        // setGlobalData(updateGlobalData);
+
     };
 
     return (
