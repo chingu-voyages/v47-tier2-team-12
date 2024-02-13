@@ -29,7 +29,7 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
             return prevTasks?.map(task => {
                 if (task.id === ind) {
                     if (name === 'days') {
-                        const daysArray = value.split(',').map(day => day.trim());
+                        const daysArray = value.includes(',') ? value.split(',').map(day => day.trim()) : [value]
                         return {
                             ...task,
                             days: daysArray
@@ -63,7 +63,6 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
 
     const handleDeleteRow = (index) => {
         const updatedArray = countArray.filter((item, ind) => ind !== index)
-        console.log(updatedArray)
         setCountArray(updatedArray)
     }
 
@@ -87,11 +86,8 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
         };
 
         const updateGlobalData = globalData.map(data => data.id === updatedProjectData.id ? updatedProjectData : data);
-        console.log(updateGlobalData)
-        // Set the updated projectData to the state
-        setProjectData(updatedProjectData);
 
-        // Set the updated globalData to the state
+        setProjectData(updatedProjectData);
         setGlobalData(updateGlobalData);
 
     };
@@ -116,7 +112,7 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
                                         <input
                                             name='taskName'
                                             type="text"
-                                            className='taskName'
+                                            id='taskName'
                                             placeholder='Enter Task Name'
                                             value={newActivity[index].taskName}
                                             onChange={(e) => handleInputChange(e, newActivity[index].id)}
@@ -126,18 +122,18 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
                                         <input
                                             name='taskDescription'
                                             type="text"
-                                            className='taskDescription'
+                                            id='taskDescription'
                                             placeholder='Enter Task Description'
                                             value={newActivity[index].taskDescription}
                                             onChange={(e) => handleInputChange(e, newActivity[index].id)}
                                         />
-                                        <label htmlFor="DayName">Day Name :</label>
+                                        <label htmlFor="days">Day Name :</label>
                                         <input
-                                            name='DayName'
+                                            id='days'
+                                            name='days'
                                             type="text"
-                                            className='DayName'
                                             placeholder='Enter Day Name'
-                                            value={newActivity[index]}
+                                            value={newActivity[index].days}
                                             onChange={(e) => handleInputChange(e, newActivity[index].id)}
                                         />
                                         {index !== 0 && <span
