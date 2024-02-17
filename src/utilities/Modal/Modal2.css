@@ -1,10 +1,11 @@
 .modal2-container {
-    width: 60%;
+    width: 70%;
     height: 60%;
     background-color: rgb(232, 227, 227);
     position: absolute;
-    left: 25%;
+    left: 18%;
     top: 25%;
+    border: 1px solid black;
 
 }
 
@@ -12,7 +13,9 @@
     padding: 2em;
     display: grid;
     grid-template-rows: 10% 70% 20%;
+    /* flex-direction: column; */
     height: 100%;
+    width: 100%;
 }
 
 .modal2-header {
@@ -32,18 +35,49 @@
     font-weight: 600;
 }
 
-.modal2-task-inner-container {
+.modal2-task-container {
+    margin-top: 1em;
     padding: 0.5em;
-    border: 1px solid black;
+    width: full;
+}
+
+.modal2-task-inner-container {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    gap: 2em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgb(111, 111, 107);
+}
+
+.modal2-task-inner-container2 {
     display: flex;
+    gap: 2em;
+}
+
+.modal2-outer-task-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .add-more-task-btn {
-    justify-self: left;
+    align-self: flex-start;
+    background: hsla(243, 75%, 65%, 0.536);
+    padding: 0.5em 0.8em;
+    border: none;
+    color: azure;
+    font-weight: 600;
+    font-size: 1.8rem;
 }
 
 .modal2-container-footer {
-    border: 1px solid black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2em;
 }
 
 .cancel-btn {

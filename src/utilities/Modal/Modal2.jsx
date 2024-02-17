@@ -70,7 +70,7 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
         setShowModal(!showModal);
 
         const updatedTasks = projectData.activityTypes.map((activityType) => {
-            if (activityType.id === updateItem) {
+            if (activityType.id === updateItem.ind) {
                 return {
                     ...activityType,
                     Tasks: [...activityType.Tasks, ...newActivity],
@@ -91,59 +91,61 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
         setGlobalData(updateGlobalData);
 
     };
-
     return (
         <div className='modal2-container'>
             <div className="modal2-inner-container">
                 <div className="modal2-header">
-                    <h3>Add more Tasks</h3>
+                    <>
+
+                        <h3 className='task-heading'>Add more Tasks to - {updateItem.name}</h3>
+                    </>
                     <ImCross onClick={() => setShowModal(!showModal)} size={15} className='cross-icon' />
                 </div>
-                <div style={{ border: '1px solid black' }}>
-                    <div>
-                        <h3 className='task-heading'>bgcfh</h3>
+                <div className='modal2-outer-task-container' style={{ border: '1px solid black' }}>
+                    <div >
                         <div className="modal2-task-container">
                             {
                                 countArray.map((item, index) => {
                                     return <div key={index} className="modal2-task-inner-container">
+                                        <div className='modal2-task-inner-container2'>
+                                            <>
+                                                <label htmlFor="taskName">Task Name:</label>
+                                                <input
+                                                    name='taskName'
+                                                    type="text"
+                                                    id='taskName'
+                                                    placeholder='Enter Task Name'
+                                                    value={newActivity[index].taskName}
+                                                    onChange={(e) => handleInputChange(e, newActivity[index].id)}
+                                                />
 
-
-                                        <label htmlFor="taskName">Task Name:</label>
-                                        <input
-                                            name='taskName'
-                                            type="text"
-                                            id='taskName'
-                                            placeholder='Enter Task Name'
-                                            value={newActivity[index].taskName}
-                                            onChange={(e) => handleInputChange(e, newActivity[index].id)}
-                                        />
-
-                                        <label htmlFor="taskDescription">Task Description:</label>
-                                        <input
-                                            name='taskDescription'
-                                            type="text"
-                                            id='taskDescription'
-                                            placeholder='Enter Task Description'
-                                            value={newActivity[index].taskDescription}
-                                            onChange={(e) => handleInputChange(e, newActivity[index].id)}
-                                        />
-                                        <label htmlFor="days">Day Name :</label>
-                                        <input
-                                            id='days'
-                                            name='days'
-                                            type="text"
-                                            placeholder='Enter Day Name'
-                                            value={newActivity[index].days}
-                                            onChange={(e) => handleInputChange(e, newActivity[index].id)}
-                                        />
-                                        {index !== 0 && <span
+                                                <label htmlFor="taskDescription">Task Description:</label>
+                                                <input
+                                                    name='taskDescription'
+                                                    type="text"
+                                                    id='taskDescription'
+                                                    placeholder='Enter Task Description'
+                                                    value={newActivity[index].taskDescription}
+                                                    onChange={(e) => handleInputChange(e, newActivity[index].id)}
+                                                />
+                                                <label htmlFor="days">Day Name :</label>
+                                                <input
+                                                    id='days'
+                                                    name='days'
+                                                    type="text"
+                                                    placeholder='Enter Day Name'
+                                                    value={newActivity[index].days}
+                                                    onChange={(e) => handleInputChange(e, newActivity[index].id)}
+                                                />
+                                            </>
+                                        </div>
+                                        {index !== 0 && (<span
                                             onClick={() => handleDeleteRow(index)}
-                                        // style={{ display: ind === 0 ? "none" : "block" }}
                                         >
                                             <Trash2 size={20} color="red" />
-                                        </span>}
-                                    </div>
+                                        </span>)}
 
+                                    </div>
                                 })
                             }
 
@@ -151,7 +153,6 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
                     </div>
                     <button className='add-more-task-btn' onClick={handleAddTask} >Add more Task</button>
                 </div>
-
                 <div className='modal2-container-footer'>
                     <button className='cancel-btn' onClick={() => setShowModal(!showModal)}>Cancel</button>
                     <button className='save-btn' onClick={handleSave}>Save</button>

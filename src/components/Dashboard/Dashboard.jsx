@@ -59,9 +59,14 @@ const Dashboard = () => {
   }
 
 
-  function handleTaskUpdate(id) {
+  function handleTaskUpdate(id, name) {
     setShowModal(!showModal)
-    setUpdateItem(id)
+    setUpdateItem(
+      {
+        ind: id,
+        name: name
+      }
+    )
 
   }
 
@@ -77,7 +82,7 @@ const Dashboard = () => {
                 <FaRegPenToSquare
                   className="update-icon"
                   size={25}
-                  onClick={() => handleTaskUpdate(item.id)}
+                  onClick={() => handleTaskUpdate(item.id, item.activityName)}
                 />
 
               </div>
@@ -143,7 +148,16 @@ const Dashboard = () => {
               })}
 
               {
-                item.Tasks.length === 0 && <h1>No task under this section</h1>
+                item.Tasks.length === 0 && <div style={{
+                  backgroundColor: 'rgba(68, 56, 202, 0.705)',
+                  height: '5em',
+                  textAlign: 'center',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+
+                }}><h1>No task under this section</h1></div>
               }
             </div>
           </div>
