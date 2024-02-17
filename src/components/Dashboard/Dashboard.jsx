@@ -9,10 +9,16 @@ import Modal2 from "../../utilities/Modal/Modal2";
 const Dashboard = () => {
   const { projectData, setProjectData, globalData,
     setGlobalData, generateMonthData } = useContext(Todo_context);
-  const [checkedState, setCheckedState] = useState({});
+
+  const [checkedState, setCheckedState] = useState(() => {
+    const localStorageData = localStorage.getItem('checkedValue');
+    return localStorageData ? JSON.parse(localStorageData) : {};
+  });
+
   const [showModal, setShowModal] = React.useState(false);
   const [updateItem, setUpdateItem] = React.useState(null)
   const monthData = generateMonthData();
+
 
   React.useEffect(() => {
 
@@ -50,13 +56,23 @@ const Dashboard = () => {
     // Set the updated globalData to the state
     setGlobalData(updateGlobalData)
 
+
+    localStorage.setItem('globalData', JSON.stringify(updateGlobalData));
+
   }
+
+
 
   function handleCheck(taskId, date) {
     const key = `${taskId}_${date}`;
-    const newCheckedState = { ...checkedState, [key]: !checkedState[key] };
+
+    const newCheckedState = { ...checkedState, [key]:!checkedState[key] };
+
+    localStorage.setItem('checkedValue', JSON.stringify(newCheckedState));
+
     setCheckedState(newCheckedState);
   }
+
 
 
   function handleTaskUpdate(id, name) {
@@ -123,6 +139,8 @@ const Dashboard = () => {
                       <div className="main-div-checkboxes">
                         {monthData.map((day, index) => {
                           const key = `${task.id}_${day.date}`;
+                          // console.log(checkedState[key])
+
                           return (
                             <>
                               <div key={index} className="check-boxes-inner-container ">
