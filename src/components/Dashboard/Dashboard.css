@@ -106,25 +106,6 @@
     grid-template-columns: 30% 70%;
     overflow: hidden;
 }
-/* @media (min-width: 1025px) and (max-width:2560px) {
-    .activity-inner-container {
-        width: 100% !important;
-        display: grid !important;
-        grid-template-columns: 30% 100% !important;
-        overflow: hidden !important;
-    }
-    .task-inner-container {
-        display: grid !important;
-        grid-template-columns: 30% 100% !important;
-        align-items: center !important;
-        grid-gap: 0.01em !important;
-        width: 100% !important;
-        overflow: hidden !important;
-    }
-   
-    
-  } */
-
 
 .task-inner-container {
     display: grid;
@@ -151,6 +132,7 @@
     padding: 1rem;
     width: 100%;
 }
+
 .check-boxes-inner-container {
     display: flex;
     justify-content: center;
@@ -160,23 +142,24 @@
     padding: 1rem;
     width: 100%;
 }
-
-
 .main-div-checkboxes{
     display: flex;
     height: 100%;
     overflow-x: auto !important;
 }
-.input-checked-box{
+
+.input-checked-box {
     margin: 0px;
 }
-.week-end{
-    background-color:orange ;
+
+.week-end {
+    background-color: orange;
     text-align: center;
     display: flex;
     align-items: center;
 }
-.visiblity-hidden{
+
+.visiblity-hidden {
     visibility: hidden;
     padding: inherit;
 
