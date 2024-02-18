@@ -126,7 +126,7 @@ const Dashboard = () => {
                       <div className="task-inner-container-2">
                         <div>
                           <p className=" days">
-                            {task.days.length > 1 ? `${task.days[0]} - ${task.days[task.days.length - 1]}` : task.days[0].length < 3 ? `${task.days[0]} days` : task.days[0]}</p>
+                            {task?.days?.length > 1 ? `${task?.days[0]} - ${task?.days[task?.days?.length - 1]}` : task?.days[0]?.length < 3 ? `${task?.days[0]} days` : task?.days[0]}</p>
                           <p className="task-name">{task.taskName}</p>
                         </div>
                         <button
