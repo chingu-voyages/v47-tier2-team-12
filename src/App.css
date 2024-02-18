@@ -53,8 +53,6 @@
   grid-template-columns: 15% 85%;
 }
 
-
-
 .lds-ring {
   display: inline-block;
   position: relative;
@@ -96,5 +94,26 @@
 
   100% {
     transform: rotate(360deg);
+  }
+
+
+}
+
+.ShowSidebar-todo {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+/* media Queries  */
+@media (max-width: 1024px) {
+  .todo-body {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .dashboard-laptop-sm {
+    width: 100% !important;
   }
 }

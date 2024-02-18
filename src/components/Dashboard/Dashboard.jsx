@@ -66,7 +66,7 @@ const Dashboard = () => {
   function handleCheck(taskId, date) {
     const key = `${taskId}_${date}`;
 
-    const newCheckedState = { ...checkedState, [key]:!checkedState[key] };
+    const newCheckedState = { ...checkedState, [key]: !checkedState[key] };
 
     localStorage.setItem('checkedValue', JSON.stringify(newCheckedState));
 
@@ -125,8 +125,7 @@ const Dashboard = () => {
                     <div className="task-inner-container">
                       <div className="task-inner-container-2">
                         <div>
-                          <p className=" days">
-                            {task?.days?.length > 1 ? `${task?.days[0]} - ${task?.days[task?.days?.length - 1]}` : task?.days[0]?.length < 3 ? `${task?.days[0]} days` : task?.days[0]}</p>
+                          <p className=" days">{task.days[0]}</p>
                           <p className="task-name">{task.taskName}</p>
                         </div>
                         <button

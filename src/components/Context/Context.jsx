@@ -39,6 +39,7 @@ const Context = (props) => {
 
 
 
+
   return (
     <Todo_context.Provider
       value={{
@@ -49,7 +50,9 @@ const Context = (props) => {
         setShowModal,
         globalData,
         setGlobalData,
-        generateMonthData
+        generateMonthData,
+        showSidebar,
+        setshowSidebar
       }}
     >
       {props.children}
