@@ -98,12 +98,11 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
             <div className="modal2-inner-container">
                 <div className="modal2-header">
                     <>
-
                         <h3 className='task-heading'>Add more Tasks to - {updateItem.name}</h3>
                     </>
                     <ImCross onClick={() => setShowModal(!showModal)} size={15} className='cross-icon' />
                 </div>
-                <div className='modal2-outer-task-container' style={{ border: '1px solid black' }}>
+                <div className='modal2-outer-task-container' >
                     <div >
                         <div className="modal2-task-container">
                             {

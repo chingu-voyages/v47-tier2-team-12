@@ -5,7 +5,6 @@
     position: absolute;
     left: 18%;
     top: 25%;
-    border: 1px solid black;
 
 }
 
@@ -25,14 +24,12 @@
     padding-left: 0;
 }
 
-.modal2-header h3 {
-    font-size: 2.5rem;
-    font-weight: 600;
-}
+
 
 .task-heading {
     font-size: 3rem;
     font-weight: 600;
+    color: rgba(14, 8, 8, 0.792);
 }
 
 .modal2-task-container {
@@ -47,7 +44,7 @@
     grid-template-columns: 90% 10%;
     gap: 2em;
     padding-bottom: 1em;
-    border-bottom: 1px solid rgb(111, 111, 107);
+    border-bottom: 1px solid rgba(111, 111, 107, 0.514);
 }
 
 .modal2-task-inner-container2 {
@@ -61,16 +58,19 @@
     justify-content: space-around;
     overflow-x: hidden;
     overflow-y: scroll;
+    margin-top: 1em;
+    border: 2px solid rgba(0, 0, 0, 0.249);
 }
 
 .add-more-task-btn {
     align-self: flex-start;
-    background: hsla(243, 75%, 65%, 0.536);
+    background: hsla(243, 75%, 65%, 0.954);
     padding: 0.5em 0.8em;
     border: none;
     color: azure;
     font-weight: 600;
     font-size: 1.8rem;
+    margin-left: 0.5em;
 }
 
 .modal2-container-footer {
@@ -84,7 +84,6 @@
     background-color: #da2121e6;
     padding: 6px 10px;
     border-radius: 6px;
-    border: 1px solid gray;
     cursor: pointer;
 }
 
