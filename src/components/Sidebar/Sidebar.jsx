@@ -7,11 +7,11 @@ import { Trash2 } from "react-feather";
 const Sidebar = () => {
   const { setProjectData, setShowModal, globalData, setGlobalData } =
     useContext(Todo_context);
-  const [currentSelectedInd, setCurrentSelectedInd] = useState(null);
+  const [currentSelectedInd, setCurrentSelectedInd] = useState(0);
   const [categoryName, setCategoryName] = useState("");
   const [addNewActivity, setAddNewActivity] = useState([
     {
-      id:0,
+      id: 0,
       activityName: "",
       taskName: "",
       taskDescription: "",
@@ -36,7 +36,7 @@ const Sidebar = () => {
     }));
     setAddNewActivity([
       {
-        id:0,
+        id: 0,
         activityName: "",
         taskName: "",
         taskDescription: "",
@@ -46,8 +46,11 @@ const Sidebar = () => {
       categoryName: categoryName,
       activityTypes: newData,
     };
-    setGlobalData([...globalData, temp]);
+    const updatedGlobalData = [...globalData, temp];
+    setGlobalData(updatedGlobalData);
+    localStorage.setItem('globalData', JSON.stringify(updatedGlobalData));
     setShowModal(false);
+
   };
   function generateUniqueNumber() {
     const timestamp = new Date().getTime();
@@ -56,11 +59,11 @@ const Sidebar = () => {
     return uniqueNumber;
   }
   const handleAddNewActivity = () => {
-    const {id}=addNewActivity;
+    const { id } = addNewActivity;
     setAddNewActivity([
       ...addNewActivity,
       {
-        id:generateUniqueNumber(),
+        id: generateUniqueNumber(),
         activityName: "",
         taskName: "",
         taskDescription: "",
@@ -78,9 +81,8 @@ const Sidebar = () => {
         return (
           <div
             key={ind}
-            className={`app-sidebar__item flex m-4 items-center justify-between gap-6 c-pointer ${
-              currentSelectedInd === ind ? "selected" : ""
-            }`}
+            className={`app-sidebar__item flex m-4 items-center justify-between gap-6 c-pointer ${currentSelectedInd === ind ? "selected" : ""
+              }`}
             onClick={() => {
               setProjectData(ele);
               setCurrentSelectedInd(ind);
@@ -127,9 +129,8 @@ const Sidebar = () => {
               return (
                 <div
                   key={ele?.id}
-                  className={`flex ${
-                    ind !== 0 ? "gap-20 items-end" : "justify-between"
-                  } `}
+                  className={`flex ${ind !== 0 ? "gap-20 items-end" : "justify-between"
+                    } `}
                 >
                   <div className="flex gap-8 justify-between flex-wrap">
                     <div>

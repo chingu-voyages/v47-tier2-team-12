@@ -16,6 +16,9 @@ const Modal = (props) => {
     window.addEventListener("click", handleClickOutside);
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
+
+
+
   return (
     <div
       id="myModal"
