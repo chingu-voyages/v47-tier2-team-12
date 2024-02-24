@@ -1,31 +1,41 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import todo_global_data from "../Data/Data";
-export const Todo_context = createContext(null);
-// For creating Unique id for each task 
 import { nanoid } from "nanoid";
-import { generateMonthData } from '../../utilities/MonthDataGenerator/MonthDataGenerator'
+import { generateMonthData } from '../../utilities/MonthDataGenerator/MonthDataGenerator';
 
+export const Todo_context = createContext(null);
 
 const Context = (props) => {
-
-  // here the whole data is being recreated with unique id for each task
-  const dataWithId = todo_global_data.map(category => ({
-    ...category,
-    id: nanoid(),
-    activityTypes: category.activityTypes.map(activityType => ({
-      ...activityType,
-      Tasks: activityType.Tasks.map(task => ({
-        ...task,
-        id: nanoid(),
-      })),
-    })),
-  }));
-
-
-  const [globalData, setGlobalData] = useState(dataWithId);
+  const [loading, setLoading] = useState(true);
   const [projectData, setProjectData] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [globalData, setGlobalData] = useState(null);
 
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      const localStorageData = localStorage.getItem('globalData');
+      if (localStorageData) {
+        setGlobalData(JSON.parse(localStorageData));
+      } else {
+        const dataWithId = todo_global_data.map(category => ({
+          ...category,
+          id: nanoid(),
+          activityTypes: category.activityTypes.map(activityType => ({
+            id: nanoid(),
+            ...activityType,
+            Tasks: activityType.Tasks.map(task => ({
+              ...task,
+              id: nanoid(),
+            })),
+          })),
+        }));
+        setGlobalData(dataWithId);
+        localStorage.setItem('globalData', JSON.stringify(dataWithId));
+      }
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(delay);
+  }, []);
 
 
 
@@ -34,6 +44,7 @@ const Context = (props) => {
       value={{
         projectData,
         setProjectData,
+        loading,
         showModal,
         setShowModal,
         globalData,

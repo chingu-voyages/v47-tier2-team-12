@@ -2,17 +2,30 @@ import React, { useContext, useState } from "react";
 import { Todo_context } from "../Context/Context";
 import "./Dashboard.css";
 import { Trash2 } from "react-feather";
+import { FaRegPenToSquare } from "react-icons/fa6";
+import Modal2 from "../../utilities/Modal/Modal2";
+
 
 const Dashboard = () => {
   const { projectData, setProjectData, globalData,
-    setGlobalData, generateMonthData } =
-    useContext(Todo_context);
-  // const [checked, setChecked] = useState([]);
-  const [checkedState, setCheckedState] = useState({});
+    setGlobalData, generateMonthData } = useContext(Todo_context);
+
+  const [checkedState, setCheckedState] = useState(() => {
+    const localStorageData = localStorage.getItem('checkedValue');
+    return localStorageData ? JSON.parse(localStorageData) : {};
+  });
+
+  const [showModal, setShowModal] = React.useState(false);
+  const [updateItem, setUpdateItem] = React.useState(null)
+  const monthData = generateMonthData();
 
 
-  console.log(projectData, "project");
-  // console.log(globalData)
+  React.useEffect(() => {
+
+    const tempdata = globalData[0]
+    setProjectData(tempdata)
+
+  }, [])
 
   function handleDelete(id) {
     // Create a new array with updated tasks excluding the one with the specified id
@@ -43,14 +56,35 @@ const Dashboard = () => {
     // Set the updated globalData to the state
     setGlobalData(updateGlobalData)
 
+
+    localStorage.setItem('globalData', JSON.stringify(updateGlobalData));
+
   }
+
+
 
   function handleCheck(taskId, date) {
     const key = `${taskId}_${date}`;
-    const newCheckedState = { ...checkedState, [key]: !checkedState[key] };
+
+    const newCheckedState = { ...checkedState, [key]:!checkedState[key] };
+
+    localStorage.setItem('checkedValue', JSON.stringify(newCheckedState));
+
     setCheckedState(newCheckedState);
   }
-  const monthData = generateMonthData();
+
+
+
+  function handleTaskUpdate(id, name) {
+    setShowModal(!showModal)
+    setUpdateItem(
+      {
+        ind: id,
+        name: name
+      }
+    )
+
+  }
 
   return (
     <div className={`activity-container `}>
@@ -61,6 +95,12 @@ const Dashboard = () => {
             <div className="activity-inner-container">
               <div className="activity-name-container">
                 <h3 className="activity-name">{item.activityName}</h3>
+                <FaRegPenToSquare
+                  className="update-icon"
+                  size={25}
+                  onClick={() => handleTaskUpdate(item.id, item.activityName)}
+                />
+
               </div>
               <div className="day-container">
                 {monthData.map((item, index) => {
@@ -85,7 +125,8 @@ const Dashboard = () => {
                     <div className="task-inner-container">
                       <div className="task-inner-container-2">
                         <div>
-                          <p className=" days">{task.days[0]}</p>
+                          <p className=" days">
+                            {task.days.length > 1 ? `${task.days[0]} - ${task.days[task.days.length - 1]}` : task.days[0].length < 3 ? `${task.days[0]} days` : task.days[0]}</p>
                           <p className="task-name">{task.taskName}</p>
                         </div>
                         <button
@@ -98,6 +139,8 @@ const Dashboard = () => {
                       <div className="main-div-checkboxes">
                         {monthData.map((day, index) => {
                           const key = `${task.id}_${day.date}`;
+                          // console.log(checkedState[key])
+
                           return (
                             <>
                               <div key={index} className="check-boxes-inner-container ">
@@ -121,10 +164,29 @@ const Dashboard = () => {
                   </div>
                 );
               })}
+
+              {
+                item.Tasks.length === 0 && <div style={{
+                  backgroundColor: 'rgba(68, 56, 202, 0.705)',
+                  height: '5em',
+                  textAlign: 'center',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+
+                }}><h1>No task under this section</h1></div>
+              }
             </div>
           </div>
         );
       })}
+      {showModal && <Modal2
+        updateItem={updateItem}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />}
+
     </div>
   );
 };
