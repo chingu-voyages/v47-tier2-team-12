@@ -46,8 +46,11 @@ const Sidebar = () => {
       categoryName: categoryName,
       activityTypes: newData,
     };
-    setGlobalData([...globalData, temp]);
+    const updatedGlobalData = [...globalData, temp];
+    setGlobalData(updatedGlobalData);
+    localStorage.setItem('globalData', JSON.stringify(updatedGlobalData));
     setShowModal(false);
+
   };
   function generateUniqueNumber() {
     const timestamp = new Date().getTime();

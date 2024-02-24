@@ -23,7 +23,10 @@ const Context = (props) => {
   }));
 
 
-  const [globalData, setGlobalData] = useState(dataWithId);
+  const [globalData, setGlobalData] = useState(() => {
+    const localStorageData = localStorage.getItem('globalData');
+    return localStorageData ? JSON.parse(localStorageData) : dataWithId;
+  });
   const [projectData, setProjectData] = useState([]);
   const [showModal, setShowModal] = useState(false);
 

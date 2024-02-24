@@ -88,6 +88,8 @@ const Modal2 = ({ showModal, setShowModal, updateItem }) => {
         const updateGlobalData = globalData.map(data => data.id === updatedProjectData.id ? updatedProjectData : data);
 
         setProjectData(updatedProjectData);
+        localStorage.setItem('globalData', JSON.stringify(updateGlobalData));
+
         setGlobalData(updateGlobalData);
 
     };
